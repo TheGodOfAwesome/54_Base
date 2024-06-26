@@ -239,7 +239,7 @@ export default function NftMarketplace() {
         chain: defineChain(baseSepolia),
         address: DROP_CONTRACT
       }),
-      address: walletAddress as `0x${string}`
+      address: walletAddress as `0x${string}` || ""  as `0x${string}`
     }
   );
 
@@ -971,7 +971,7 @@ export default function NftMarketplace() {
               }}
               transaction={()=> claimERC20({
                 contract: tokenContractSPY,
-                to: walletAddress || "",
+                to:  walletAddress as `0x${string}` || ""  as `0x${string}`,
                 quantity: "10"
               })}
               onError={async (e) => {
