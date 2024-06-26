@@ -239,7 +239,7 @@ export default function NftMarketplace() {
         chain: defineChain(baseSepolia),
         address: DROP_CONTRACT
       }),
-      address: walletAddress
+      address: walletAddress as `0x${string}`
     }
   );
 
