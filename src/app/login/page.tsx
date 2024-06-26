@@ -57,33 +57,33 @@ export default function Home() {
   const [address, setAddress] = useState('');
 
   const login = async () => {
-    try {
-      const userInfo = await particle.auth.login();
-      const particleProvider = new ParticleProvider(particle.auth);
-      const web3Provider = new ethers.providers.Web3Provider(particleProvider, 'any');
+    // try {
+    //   const userInfo = await particle.auth.login();
+    //   const particleProvider = new ParticleProvider(particle.auth);
+    //   const web3Provider = new ethers.providers.Web3Provider(particleProvider, 'any');
 
-      const validationModule = await ECDSAOwnershipValidationModule.create({
-        signer: web3Provider.getSigner(),
-        moduleAddress: DEFAULT_ECDSA_OWNERSHIP_MODULE,
-      });
+    //   const validationModule = await ECDSAOwnershipValidationModule.create({
+    //     signer: web3Provider.getSigner(),
+    //     moduleAddress: DEFAULT_ECDSA_OWNERSHIP_MODULE,
+    //   });
 
-      let biconomySmartAccount = await BiconomySmartAccountV2.create({
-        chainId: ChainId.ARBITRUM_SEPOLIA,
-        bundler: bundler,
-        paymaster: paymaster,
-        entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
-        defaultValidationModule: validationModule,
-        activeValidationModule: validationModule,
-      });
+    //   let biconomySmartAccount = await BiconomySmartAccountV2.create({
+    //     chainId: ChainId.ARBITRUM_SEPOLIA,
+    //     bundler: bundler,
+    //     paymaster: paymaster,
+    //     entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
+    //     defaultValidationModule: validationModule,
+    //     activeValidationModule: validationModule,
+    //   });
 
-      const accountAddress = await biconomySmartAccount.getAccountAddress();
-      setProvider(web3Provider);
-      setSmartAccount(biconomySmartAccount);
-      setAddress(accountAddress);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
+    //   const accountAddress = await biconomySmartAccount.getAccountAddress();
+    //   setProvider(web3Provider);
+    //   setSmartAccount(biconomySmartAccount);
+    //   setAddress(accountAddress);
+    //   setLoading(false);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   return (
@@ -100,7 +100,7 @@ export default function Home() {
           {loading && <p>Loading...</p>}
           {address && <h2>Smart Account Address: {address}</h2>}
           <Minter smartAccount={smartAccount} provider={provider} address={address}/>
-          <Counter smartAccount={smartAccount} provider={provider}/>
+          {/* <Counter smartAccount={smartAccount} provider={provider}/> */}
         </div>
       </main>
     </>

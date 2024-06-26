@@ -145,31 +145,31 @@ export default function SignIn() {
   })
 
   const connect = async () => {
-    try {
-      setLoading(true)
-      const userInfo = await particle.auth.login();
-      console.log("Logged in user:", userInfo);
-      const particleProvider = new ParticleProvider(particle.auth);
-      console.log({particleProvider})
-      const web3Provider = new ethers.providers.Web3Provider(
-        particleProvider,
-        "any"
-      );
-      setProvider(web3Provider)
-      const biconomySmartAccountConfig: BiconomySmartAccountV2Config = {
-        signer: web3Provider.getSigner(),
-        chainId: ChainId.BASE_GOERLI_TESTNET,
-        bundler: bundler,
-        paymaster: paymaster
-      }
-      let biconomySmartAccount = new BiconomySmartAccountV2(biconomySmartAccountConfig)
-      biconomySmartAccount =  await biconomySmartAccount.init()
-      setAddress( await biconomySmartAccount.getSmartAccountAddress())
-      setSmartAccount(biconomySmartAccount)
-      setLoading(false)
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   setLoading(true)
+    //   const userInfo = await particle.auth.login();
+    //   console.log("Logged in user:", userInfo);
+    //   const particleProvider = new ParticleProvider(particle.auth);
+    //   console.log({particleProvider})
+    //   const web3Provider = new ethers.providers.Web3Provider(
+    //     particleProvider,
+    //     "any"
+    //   );
+    //   setProvider(web3Provider)
+    //   const biconomySmartAccountConfig: BiconomySmartAccountV2Config = {
+    //     signer: web3Provider.getSigner(),
+    //     chainId: ChainId.BASE_GOERLI_TESTNET,
+    //     bundler: bundler,
+    //     paymaster: paymaster
+    //   }
+    //   let biconomySmartAccount = new BiconomySmartAccountV2(biconomySmartAccountConfig)
+    //   biconomySmartAccount =  await biconomySmartAccount.init()
+    //   setAddress( await biconomySmartAccount.getSmartAccountAddress())
+    //   setSmartAccount(biconomySmartAccount)
+    //   setLoading(false)
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
   
   return (

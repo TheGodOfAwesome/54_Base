@@ -7,13 +7,13 @@ import abi from '../../utils/counter_abi.json'
 
 const CONTRACT_ADDRESS = '0xa0f89f8fd88c9718bb359d972ff8d6cb26160624';
 
-export default function Counter({ smartAccount, provider }) {
+export default function Counter({  }) {
     const [number, setNumber] = useState(0);
     const [contract, setContract] = useState<ethers.Contract>();
 
     useEffect(() => {
-        const counterContract = new ethers.Contract(CONTRACT_ADDRESS, abi.abi, provider);
-        setContract(counterContract);
+        // const counterContract = new ethers.Contract(CONTRACT_ADDRESS, abi.abi, provider);
+        // setContract(counterContract);
     }, []);
 
     const getNumber = async () => {
@@ -30,26 +30,26 @@ export default function Counter({ smartAccount, provider }) {
             data: data,
         };
 
-        try {
-        const userOp = await smartAccount.buildUserOp([transaction], {
-            paymasterServiceData: {
-            mode: PaymasterMode.SPONSORED,
-            // mode: PaymasterMode.ERC20,
-            },
-        });
-        const userOpResponse = await smartAccount.sendUserOp(userOp);
-        const transactionDetails = await userOpResponse.wait();
-        console.log('Transaction details:', transactionDetails);
-        console.log('Transaction hash:', transactionDetails.receipt.transactionHash);
-        } catch (e) {
-        console.error('Error executing transaction:', e);
-        }
+        // try {
+        // const userOp = await smartAccount.buildUserOp([transaction], {
+        //     paymasterServiceData: {
+        //     mode: PaymasterMode.SPONSORED,
+        //     // mode: PaymasterMode.ERC20,
+        //     },
+        // });
+        // const userOpResponse = await smartAccount.sendUserOp(userOp);
+        // const transactionDetails = await userOpResponse.wait();
+        // console.log('Transaction details:', transactionDetails);
+        // console.log('Transaction hash:', transactionDetails.receipt.transactionHash);
+        // } catch (e) {
+        // console.error('Error executing transaction:', e);
+        // }
     };
 
     return (
         <>
-            <div>Current number: {number}</div>
-            <button onClick={() => increment()}>Increment</button>
+            {/* <div>Current number: {number}</div>
+            <button onClick={() => increment()}>Increment</button> */}
         </>
     );
 }

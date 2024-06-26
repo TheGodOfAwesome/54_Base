@@ -1,6 +1,6 @@
 "use client";
 
-import { publicClient } from "../client";
+// import { publicClient } from "../client";
 import {
   MultiOwnerModularAccount,
   createMultiOwnerModularAccount,
@@ -58,51 +58,52 @@ export const SignerContextProvider = ({
   const params = useSearchParams();
 
   // TODO: the refetch logic should be moved into the context here
-  const {
-    data = { user: null, account: null },
-    isLoading: isLoadingUser,
-    refetch: refetchUserDetails,
-  } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => {
-      if (params.get("bundle") != null) {
-        await signer!.authenticate({
-          type: "email",
-          bundle: params.get("bundle")!,
-        });
-      }
+  // const {
+  //   data = { user: null, account: null },
+  //   isLoading: isLoadingUser,
+  //   refetch: refetchUserDetails,
+  // } = useQuery({
+  //   queryKey: ["user"],
+  //   queryFn: async () => {
+  //     if (params.get("bundle") != null) {
+  //       await signer!.authenticate({
+  //         type: "email",
+  //         bundle: params.get("bundle")!,
+  //       });
+  //     }
 
-      // this only ever runs on the client, so we can assume the signer is defined
-      const user = await signer!.getAuthDetails().catch(() => {
-        return null;
-      });
+  //     // this only ever runs on the client, so we can assume the signer is defined
+  //     const user = await signer!.getAuthDetails().catch(() => {
+  //       return null;
+  //     });
 
-      const account = user
-        ? await createMultiOwnerModularAccount({
-            transport: custom(publicClient),
-            chain: sepolia,
-            signer: signer!,
-          })
-        : null;
+  //     const account = user
+  //       ? await createMultiOwnerModularAccount({
+  //           transport: custom(publicClient),
+  //           chain: sepolia,
+  //           signer: signer!,
+  //         })
+  //       : null;
 
-      return {
-        account,
-        user,
-      };
-    },
-  });
+  //     return {
+  //       account,
+  //       user,
+  //     };
+  //   },
+  // });
 
   return (
-    <SignerContext.Provider
-      value={{
-        signer: signer!,
-        user: data.user,
-        account: data.account,
-        isLoadingUser,
-        refetchUserDetails,
-      }}
-    >
-      {children}
-    </SignerContext.Provider>
+    // <SignerContext.Provider
+    //   value={{
+    //     signer: signer!,
+    //     user: data.user,
+    //     account: data.account,
+    //     isLoadingUser,
+    //     refetchUserDetails,
+    //   }}
+    // >
+    //   {children}
+    // </SignerContext.Provider>
+    <></>
   );
 };

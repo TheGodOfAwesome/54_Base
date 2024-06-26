@@ -54,8 +54,9 @@ export default function TradingViewWidget() {
                     "60m|1W",
                     "all|1M"
                 ]
-                }`;
-            container.current.appendChild(script);
+            }`;
+            // if(container?.current)
+                // container?.current?.appendChild(script);
         },
         []
     );
