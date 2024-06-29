@@ -400,7 +400,8 @@ export default function NftMarketplace() {
                 />
               }
               name="Token Balance"
-              value={"$" + walletAddress ? toEther(blncOfERC20) : "0"} 
+              value={"$" + walletAddress && blncOfERC20 ? toEther(blncOfERC20) : "0"} 
+              // value="$0" 
             />
             {/* <Link
               onClick={()=>{alert("Buy")}}
