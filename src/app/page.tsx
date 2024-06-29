@@ -46,8 +46,6 @@ import {
 } from '@chakra-ui/react';
 
 // Custom components
-import { ProfileCard } from 'components/alchemy/ProfileCard';
-import { TurnkeyIframe } from 'components/alchemy/TurnkeyIframe';
 import { HSeparator } from 'components/separator/Separator';
 import DefaultLandingLayout from 'layouts/landing/Default';
 // Assets

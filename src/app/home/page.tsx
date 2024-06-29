@@ -29,8 +29,6 @@ import supabase from 'config/supabaseClient';
 
 import { useSmartAccountClient, useUser } from "@alchemy/aa-alchemy/react";
 
-import { TurnkeyIframe } from 'components/alchemy/TurnkeyIframe';
-
 import { createThirdwebClient, defineChain, getContract, toEther } from 'thirdweb';
 import { ConnectButton, useActiveWalletConnectionStatus, useConnectModal, useActiveAccount, useSwitchActiveWalletChain, useReadContract, TransactionButton } from "thirdweb/react";
 import {sepolia, baseSepolia, arbitrumSepolia} from "thirdweb/chains";
@@ -100,7 +98,6 @@ import TotalSpent from 'views/admin/default/components/TotalSpent';
 import WeeklyRevenue from 'views/admin/default/components/WeeklyRevenue';
 import tableDataCheck from 'views/admin/default/variables/tableDataCheck';
 import tableDataComplex from 'views/admin/default/variables/tableDataComplex';
-import { UserProfileCard } from 'components/alchemy/UserProfileCard';
 
 import HistoryItem from 'views/admin/marketplace/components/HistoryItem';
 import NFT from 'components/card/NFT';
@@ -435,7 +432,7 @@ export default function NftMarketplace() {
                     }
                   />
                 }
-                name="Auto Invests in S&P500 stocks."
+                name="Quick Invests in S&P500 stocks."
                 value="Quick Invest"
               />
             </Link>
@@ -956,10 +953,10 @@ export default function NftMarketplace() {
       <Modal size="lg" isOpen={claimTokens} onClose={()=>setClaimTokens(false)}>
         <ModalOverlay />
         <ModalContent  style={{ width:"600px", maxWidth:"98vw"}}>
-          <ModalHeader>Auto Invest</ModalHeader>
+          <ModalHeader>Quick Invest</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <p>Auto Invest in S&P 500 index</p>
+            <p>Quick Invest in S&P 500 index</p>
             <AspectRatio ratio={7 / 5}>
               <Image src={sandp.src} w={'100%'} borderRadius="20px" alt="" />
             </AspectRatio>
@@ -976,23 +973,22 @@ export default function NftMarketplace() {
                 quantity: "10"
               })}
               onError={async (e) => {
-                alert("Auto Invest Error" + JSON.stringify(e.message))
+                alert("Quick Invest Error" + JSON.stringify(e.message))
               }}
               onTransactionSent={async () => {
-                alert("Auto Invest Started")
+                alert("Quick Invest Started")
               }}
               onTransactionConfirmed={async (res) => {
-                alert("Auto Invest Completed at " + res.transactionHash + " to see more visit " + "https://sepolia.basescan.org/tx/" + res.transactionHash)
+                alert("Quick Invest Completed at " + res.transactionHash + " to see more visit " + "https://sepolia.basescan.org/tx/" + res.transactionHash)
               }}
 
             > 
-              Auto Invest 
+              Quick Invest 
             </TransactionButton>
             <br/>
           </ModalBody>
         </ModalContent>
       </Modal>
-      <TurnkeyIframe/>
     </>
   );
 }
